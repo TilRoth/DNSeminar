@@ -7,6 +7,7 @@
 
 - types of tracking(cookies, fingerprinting, first-party, third-party)
 - GDPR
+- privacy policies
 - techniques used
 - results
 
@@ -16,4 +17,5 @@
 - how to identify tracking cookies (strength by zxcvbn)
 - locating websites (IP geolocation through ip-api.com)
 - domain selection (Alexa top-1M)
+- privacy policy difficulty through this score thingy
 

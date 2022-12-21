@@ -4,6 +4,12 @@
 
 ##### We Value Your Privacy ... Now Take Some Cookies: Measuring the GDPR's Impact on Web Privacy
 
+- automated analysis of privacy policies (manual if cannot be found)
+- more privacy policies
+- cookie consent notices also manual
+- domain selection also alexa top list
+- conclusion: more and better privacy policies, more cookie consent banners, but these are actually not that useful
+
 ##### GDPR-What Happened?
 
 ##### Measuring Cookies and Web Privacy in a Post-GDPR World
