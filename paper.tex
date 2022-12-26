@@ -23,6 +23,14 @@
 % }
 \email{s8tiroth@stud.uni-saarland.de}
 
+%===== Commands ========================================================================================================
+
+\newcommand{\ca}[1]{%
+    \citeauthor{#1}~\cite{#1}%
+}
+
+%=======================================================================================================================
+
 \input{abstract.tex}
 
 \maketitle
@@ -33,6 +41,18 @@
 \input{underlying.tex}
 \input{contributions.tex}
 \input{conclusion.tex}
+
+\cite{degeling2018we}
+\cite{sanchez2019can}
+\cite{whathappened}
+\cite{dabrowski2019measuring}
+\cite{nouwens2020dark}
+\cite{matte2020cookie}
+\cite{trevisan20194}
+\cite{utz2019informed}
+\cite{zimmeck2014privee}
+\cite{mcdonald2009comparative}
+\cite{jensen2004privacy}
 
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{reference.bib}
