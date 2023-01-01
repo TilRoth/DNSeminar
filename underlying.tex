@@ -1,5 +1,56 @@
 \section{Underlying Work}
 \label{sec:underlying}
 
-TODO
+In this section we discuss the underlying work by \ca{sanchez2019can}. We talk about the methodology they use and the
+results they achieved with their strategy.
+
+The main focus of the underlying work is not to evaluate whether websites comply with the law, but rather to evaluate
+the impact of the GDPR on the ability of a user to control their privacy online.
+
+\subsection{Methodology}
+
+The domain of their analysis are the Alexa top-1M websites. This is a web service by amazon which lists the websites with
+the most traffic according to the Alexa Traffic Rank. From this list, they look at 2000 websites across different
+categories from some of the top traffic websites.
+
+The data collection was done manually. This means that \citeauthor{sanchez2019can} went through all the 2000 websites by
+hand and noted features of the website. By doing this manually, you are less likely to miss any cookie notice or to
+click something wrong. Cookie consent notices can differ tremendously from one website to another making it hard to
+automate this task. On the other hand, collecting the data manually makes it harder to recreate the data they produced
+and harder to look at different features afterwards because you do not want to manually go through the 2000 websites
+again. Additionally, metrics like the waiting time until you decline the cookies or the waiting time until you reload
+the page after declining cannot be captured by manual analysis. Manual analysis provides better error resistance but is
+less flexible and practical than automated analysis. The data they collect are the cookies set before interacting with the
+consent notice, the type of consent notice, the privacy policy and the cookies set after rejecting trackers if possible.
+The different types of consent notices are:
+\begin{enumerate}[a)]
+    \item \emph{Anyway}: users are just informed that they are being tracked
+    \item \emph{AutoAccept}: users are informed that by continuing to browse they accept tracking
+    \item \emph{OnlyAccept}: there is only an accept button
+    \item \emph{AcceptReject}: there is an accept and a reject button
+    \item \emph{JustSettings}: there is a more complex settings dialog
+\end{enumerate}
+Cookie consent notices can be blocking and non-blocking meaning that you can access the website while the consent notice pops up for
+non-blocking, and you cannot access the website until you have made a choice for blocking cookie consent notices. For
+websites which link to third-party opt-out services(e.g. youronlinechoices), they used the service and observed the
+cookie behavior.
+
+The identification of tracking cookies was done through measuring the entropy of the value of a cookie with
+\texttt{zxcvbn} \cite{wheeler2016zxcvbn}. If the entropy is high enough to distinguish you from 1 Billion people, they
+consider it a tracking cookie. This is a rather new approach to the problem of identifying tracking cookies.
+On one hand you can detect cookies which with other methods could have been missed, but on the other hand you can get false positives
+where the cookie was not a tracker, but it was still classified as one. The latter is not a problem since the
+GDPR specifies that cookies which carry information that in theory could identify you still require consent even if they
+are not used as tracking cookies.
+A more common approach is to make use of lists of known third-party trackers. This approach cannot reliably identify
+first-party trackers and can miss some unknown third-parties. \citeauthor{sanchez2019can} use third-party tracker lists
+to classify their found trackers.
+
+{\color{red}TODO privacy policies FRES score}
+
+\subsection{Evaluation}
+
+\subsubsection{Tracking}
+
+\subsubsection{Privacy Policies}
 
