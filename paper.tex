@@ -5,8 +5,11 @@
 \usepackage[english]{babel}
 \usepackage{blindtext}
 \usepackage[shortlabels,inline]{enumitem}
+\usepackage{subcaption}
 
-
+\widowpenalty10000
+\clubpenalty10000
+%\sloppy
 
 \begin{document}
 \title{Can I Opt Out Yet?\\GDPR and the Global Illusion of Cookie Control}
@@ -29,6 +32,8 @@
 \newcommand{\ca}[1]{%
     \citeauthor{#1}~\cite{#1}%
 }
+
+\newcommand{\TODO}[1]{\textbf{\textcolor{red}{TODO: #1}}}
 
 %=======================================================================================================================
 

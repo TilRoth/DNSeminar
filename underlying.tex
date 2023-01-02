@@ -46,11 +46,54 @@ A more common approach is to make use of lists of known third-party trackers. Th
 first-party trackers and can miss some unknown third-parties. \citeauthor{sanchez2019can} use third-party tracker lists
 to classify their found trackers.
 
-{\color{red}TODO privacy policies FRES score}
+The GDPR requires privacy policies to be readable. Often, the privacy settings (e.g. cookie control) are only presented
+in the privacy policy section of a website. \citeauthor{sanchez2019can} evaluate the difficulty of privacy policies with
+two metrics, the \emph{Flesch Reading Ease Score} (FRES)~\cite{flesch1948new} and the \emph{Flesch-Kincaid Reading
+Level} (FKRL)~\cite{kincaid1975derivation}. Both metrics evaluate the difficulty of texts through number of syllables
+per word and sentence length. A score of about 50 could be seen as an average reading difficulty and FRES has an upper
+bound of 121.22 (greater equals easier text) and no theoretical lower bound. FKRL has a lower bound of -1.3 and no
+theoretical upper bound. \ca{jensen2004privacy} also use these metrics making it easier to compare their results to the
+results of this paper.
 
 \subsection{Evaluation}
 
+In this subsection we highlight some of the main results of the underlying work.
+
 \subsubsection{Tracking}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, scale=0.32]{figures/tracking_kind_trans.png}
+        \caption{Kind of tracking observed.\\Figure by \citeauthor{sanchez2019can}~\cite[Fig.~1]{sanchez2019can}.}
+        \label{fig:tracking_kind}
+    \end{subfigure}
+    \begin{subfigure}[b]{.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, scale=0.35]{figures/cookie_notice_type_trans.png}
+        \caption{Type of cookie notice.\\Figure by \citeauthor{sanchez2019can}~\cite[Fig.~2b]{sanchez2019can}.}
+        \label{notice_type}
+    \end{subfigure}
+    \begin{subfigure}[b]{.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, scale=0.35]{figures/cookie_notice_size_trans.png}
+        \caption{The size of the cookie notice.\\Figure by \citeauthor{sanchez2019can}~\cite[Fig.~2a]{sanchez2019can}.}
+        \label{fig:notice_size}
+    \end{subfigure}
+    \caption{Statistics about cookie tracking and consent notices}
+    \label{fig:cookie_stats}
+\end{figure}
+
+\autoref{fig:cookie_stats} shows the evaluations of the underlying work that we want to focus on.
+
+\autoref{fig:tracking_kind} illustrates the kind of tracking on the visited websites. We can observe that about 92\% of
+the websites perform some kind of tracking. This tracking is done before any consent is given and even after rejecting
+tracking cookies (opt-out). Many websites make use of third-party tracking and only a few use first-party tracking. We
+can also criticize this figure because we cannot see how many websites that use known third-party tracking also use
+first-party tracking because all websites that use third-party tracking are thrown into one category.
+
+\TODO{describe other figures}
 
 \subsubsection{Privacy Policies}
 
