@@ -8,6 +8,7 @@ The main focus of the underlying work is not to evaluate whether websites comply
 the impact of the GDPR on the ability of a user to control their privacy online.
 
 \subsection{Methodology}
+\label{subsec:methodology}
 
 The domain of their analysis are the Alexa top-1M websites. This is a web service by amazon which lists the websites with
 the most traffic according to the Alexa Traffic Rank. From this list, they look at 2000 websites across different
@@ -71,15 +72,15 @@ In this subsection we highlight some of the main results of the underlying work.
     \end{subfigure}
     \begin{subfigure}[b]{.5\textwidth}
         \centering
-        \includegraphics[width=\textwidth, scale=0.35]{figures/cookie_notice_type_trans.png}
-        \caption{Type of cookie notice.\\Figure by \citeauthor{sanchez2019can}~\cite[Fig.~2b]{sanchez2019can}.}
-        \label{notice_type}
-    \end{subfigure}
-    \begin{subfigure}[b]{.5\textwidth}
-        \centering
         \includegraphics[width=\textwidth, scale=0.35]{figures/cookie_notice_size_trans.png}
         \caption{The size of the cookie notice.\\Figure by \citeauthor{sanchez2019can}~\cite[Fig.~2a]{sanchez2019can}.}
         \label{fig:notice_size}
+    \end{subfigure}
+    \begin{subfigure}[b]{.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, scale=0.35]{figures/cookie_notice_type_trans.png}
+        \caption{Type of cookie notice.\\Figure by \citeauthor{sanchez2019can}~\cite[Fig.~2b]{sanchez2019can}.}
+        \label{fig:notice_type}
     \end{subfigure}
     \caption{Statistics about cookie tracking and consent notices}
     \label{fig:cookie_stats}
@@ -93,7 +94,29 @@ tracking cookies (opt-out). Many websites make use of third-party tracking and o
 can also criticize this figure because we cannot see how many websites that use known third-party tracking also use
 first-party tracking because all websites that use third-party tracking are thrown into one category.
 
-\TODO{describe other figures}
+\autoref{fig:notice_size} shows the size of the cookie notice differentiating between cookie consent notices which block
+you from accessing a website until you have made a choice on cookies, banners which do not block you from browsing the
+website and no cookie consent notice (splitting websites that do perform tracking and websites that do not and have no
+cookie consent notice). The GDPR specifies that consent must be explicit before any kind of tracking is performed
+(opt-in instead of opt-out) meaning that no cookie consent notice despite tracking is illegal.
+We can see in \autoref{fig:notice_size} that around 57\% of EU websites and 32\% of US
+websites have some form of cookie notice showing that the GDPR has an impact on the amount of cookie notices.
+Chinese websites do not display any cookie consent notice.
+
+\autoref{fig:notice_type} shows the type of cookie consent notice as discussed in \autoref{subsec:methodology}.
+We can observe that most websites do not have an easy way to opt-out. The best practices like \emph{AcceptReject} and
+\emph{JustSettings} are almost not present in any cookie consent notice. If a website has a cookie consent notice, it
+most likely just informs the user that cookies are being used.
+
+This shows that the GDPR had the impact of getting more
+cookie consent notices onto websites, but these are often useless as they are not conform wit the GDPR and users are
+tracked even if they reject anyway.
+
+A critique point here is that the evaluation of \ca{sanchez2019can} is lacking a proper comparison of the time before
+the GDPR and the time after. They only show their results in a post GDPR world leading to some statements being out of
+context (e.g. There are no numbers on how many cookie consent notices there were in the EU before the GDPR).
 
 \subsubsection{Privacy Policies}
+
+\TODO{privacy policies}
 
