@@ -1,5 +1,30 @@
 \section{Related Work}
 \label{sec:related}
 
-\TODO{related work}
+In this section we highlight related work in the field. There are many papers regarding the GDPR on the impact or
+the legal compliance of websites. We show the methodology and results of related papers and put the underlying
+work~\cite{sanchez2019can} into context.
+
+In 2018 \ca{degeling2018we} conducted a similar study to the one of \ca{sanchez2019can}. They evaluate the impact of the
+GDPR on cookie consent notices and privacy policies. They only target websites inside the EU, and their domain are the
+Alexa top-1M websites. The data collection for the cookie consent notices is manual meaning that
+\citeauthor{degeling2018we} went through the websites of their domain by hand, and for privacy policies it is
+semi-automated meaning that they tried to collect every privacy policy automated and if there was an error, they tried
+it by hand. \citeauthor{degeling2018we} conclude that after the GDPR there are more and more readable privacy policies
+and there are more cookie consent notices. However, they also say that these cookie notices may give users a false sense
+of privacy and security since they often only inform the user that they are being tracked without the means to prevent
+that. Users do not have more privacy online by only being informed that they are being tracked. The work of
+\ca{sanchez2019can} follows a very similar methodology and reach a similar conclusion. They extend the work of
+\ca{degeling2018we} by also taking international websites into account and observing the actual tracking that is being
+performed after navigating through the cookie consent notice.
+
+The \emph{whotracks.me} database released a blog post~\cite{whathappened} where they discuss the impact of the GDPR.
+This database is based on real user data creating a realistic image of the situation. They compare USA-based websites to
+websites inside the EU in terms of cookie tracking. The method for identification of tracking cookies is through known third-party
+tracker lists. This method has the caveat of missing first-party tracking. Also, they do not factor in the consent of
+users on tracking. The conclusion is that the average number of tracking cookies decreased in the EU and increased in
+the USA. Cookie consent notices incorporate dark patterns manipulating users decisions on cookie control. The GDPR has
+made the tracking market more concentrated meaning that smaller companies lose market share while bigger companies get
+more powerful. To fix this problem, the post suggests having a machine-readable form of the GDPR such that the law can
+not only be enacted through humans.
 
