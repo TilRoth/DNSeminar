@@ -19,9 +19,7 @@ manually with a browser and noted features of the website. By doing this manuall
 Cookie consent notices can differ tremendously from one website to another making it hard to
 automate this task. On the other hand, collecting the data manually makes it harder to recreate the data they produced
 and harder to look at different features afterwards because it takes a long time to do this task manually.
-\TODO{new section limitations}
-Additionally, metrics like the waiting time until you decline the cookies or the waiting time until you reload
-the page after declining cannot be captured by manual analysis. Manual analysis provides better error resistance but is
+Manual analysis provides better error resistance but is
 less flexible and practical than automated analysis. The data they collect are the cookies set before interacting with the
 consent notice, the type of consent notice, the privacy policy and the cookies set after rejecting trackers if possible.
 The different types of consent notices are:
@@ -65,6 +63,7 @@ theoretical upper bound. \ca{jensen2004privacy} also use these metrics making it
 results of this paper.
 
 \subsection{Evaluation}
+\label{subsec:eval}
 
 In this subsection we highlight some of the main results of the underlying work.
 
@@ -118,11 +117,6 @@ most likely just informs the user that cookies are being used. This shows that t
 cookie consent notices onto websites, but these are often useless as they are not conform with the GDPR and users are
 tracked even if they reject.
 
-\TODO{limitations}
-A critique point here is that the evaluation of \ca{sanchez2019can} is lacking a proper comparison of the time before
-the GDPR and the time after. They only show their results in a post GDPR world leading to some statements being out of
-context (e.g. There are no numbers on how many cookie consent notices there were in the EU before the GDPR).
-
 \subsubsection{Privacy Policies}
 
 \begin{table}
@@ -144,7 +138,7 @@ In total, they looked at the privacy policies of 849 policies written in English
 \autoref{tab:policies} shows the evaluation they performed on privacy policies. With an average FRES of 54.1, the
 policies are still below the threshold of about 60 to 70 which is the score you want for the general public. On the
 other hand \ca{jensen2004privacy} provide an average of 34.2 on their dataset in 2004 which shows that privacy policies
-have gotten more readable from 2004 to 2018 after the GDPR. We can make the same observation with the FKRL. \citeauthor{sanchez2019can} get to an average
+have gotten more readable from 2004 to 2019 after the GDPR. We can make the same observation with the FKRL. \citeauthor{sanchez2019can} get to an average
 of 11.1 on their dataset and in comparison to the 14.2 by \ca{jensen2004privacy}. Again, the FKRL does not meet the
 ideal threshold of about 8, but it still improved over the years. These observations show that the GDPR did not only have
 an impact on cookie consent notices, but also on privacy policies. Still the privacy policies of most websites are
