@@ -10,26 +10,27 @@ the impact of the GDPR on the ability of a user to control their privacy online.
 \subsection{Methodology}
 \label{subsec:methodology}
 
-The domain of their analysis are the Alexa top-1M websites. This is a web service by amazon which lists the websites with
+The target list of their analysis are the Alexa top-1M websites, a list by amazon showing the top 1 million websites with
 the most traffic according to the Alexa Traffic Rank. From this list, they look at 2000 websites across different
 categories from some of the top traffic websites.
 
-The data collection was done manually. This means that \citeauthor{sanchez2019can} went through all the 2000 websites by
-hand and noted features of the website. By doing this manually, you are less likely to miss any cookie notice or to
-click something wrong. Cookie consent notices can differ tremendously from one website to another making it hard to
+The data collection was done manually. This means that \citeauthor{sanchez2019can} went through all the 2000 websites
+manually with a browser and noted features of the website. By doing this manually, you are less likely to miss any cookie notice.
+Cookie consent notices can differ tremendously from one website to another making it hard to
 automate this task. On the other hand, collecting the data manually makes it harder to recreate the data they produced
-and harder to look at different features afterwards because you do not want to manually go through the 2000 websites
-again. Additionally, metrics like the waiting time until you decline the cookies or the waiting time until you reload
+and harder to look at different features afterwards because it takes a long time to do this task manually.
+\TODO{new section limitations}
+Additionally, metrics like the waiting time until you decline the cookies or the waiting time until you reload
 the page after declining cannot be captured by manual analysis. Manual analysis provides better error resistance but is
 less flexible and practical than automated analysis. The data they collect are the cookies set before interacting with the
 consent notice, the type of consent notice, the privacy policy and the cookies set after rejecting trackers if possible.
 The different types of consent notices are:
 \begin{enumerate}[a)]
-    \item \emph{Anyway}: users are just informed that they are being tracked
-    \item \emph{AutoAccept}: users are informed that by continuing to browse they accept tracking
-    \item \emph{OnlyAccept}: there is only an accept button
-    \item \emph{AcceptReject}: there is an accept and a reject button
-    \item \emph{JustSettings}: there is a more complex settings dialog
+    \item \emph{Anyway}: Users are just informed that they are being tracked.
+    \item \emph{AutoAccept}: Users are informed that by continuing to browse they accept tracking.
+    \item \emph{OnlyAccept}: There is only an accept button.
+    \item \emph{AcceptReject}: There is an accept and a reject button.
+    \item \emph{JustSettings}: There is a more complex settings dialog.
 \end{enumerate}
 Cookie consent notices can be blocking and non-blocking meaning that you can access the website while the consent notice pops up for
 non-blocking, and you cannot access the website until you have made a choice for blocking cookie consent notices. For
@@ -40,15 +41,21 @@ The identification of tracking cookies was done through measuring the entropy of
 \texttt{zxcvbn} \cite{wheeler2016zxcvbn}. If the entropy is high enough to distinguish you from 1 Billion people, they
 consider it a tracking cookie. This is a rather new approach to the problem of identifying tracking cookies.
 On one hand you can detect cookies which with other methods could have been missed, but on the other hand you can get false positives
-where the cookie was not a tracker, but it was still classified as one. The latter is not a problem since the
-GDPR specifies that cookies which carry information that in theory could identify you still require consent even if they
-are not used as tracking cookies.
+where the cookie was not a tracker, but it was still classified as one. The latter is not a problem in our case since the
+GDPR specifies that cookies which carry information that in theory could identify you still require consent except if
+they are essential (e.g. shopping cart) even if they are not used as tracking cookies. In the evaluation we do not use any functionality of a
+website which requires any essential trackers (e.g. like shopping carts) meaning that there is almost no possibility
+that we should get an essential tracking cookie.
 A more common approach is to make use of lists of known third-party trackers. This approach cannot reliably identify
 first-party trackers and can miss some unknown third-parties. \citeauthor{sanchez2019can} use third-party tracker lists
-to classify their found trackers.
+to classify their found trackers (first-party, third-party and unknown).
 
-The GDPR requires privacy policies to be readable. Often, the privacy settings (e.g. cookie control) are only presented
-in the privacy policy section of a website. \citeauthor{sanchez2019can} evaluate the difficulty of privacy policies with
+The GDPR requires privacy policies to be readable. A privacy policy is a legal document that discloses how
+a website handles the data of a user accessing the site. Privacy policies are typically found on the bottom
+of a website through a link. Often, the privacy settings (e.g. cookie control) are only presented
+in the privacy policy section of a website. While performing their manual analysis on consent notices,
+\citeauthor{sanchez2019can} also copy the privacy policy of a website if present. They evaluate the difficulty of
+privacy policies with
 two metrics, the \emph{Flesch Reading Ease Score} (FRES)~\cite{flesch1948new} and the \emph{Flesch-Kincaid Reading
 Level} (FKRL)~\cite{kincaid1975derivation}. Both metrics evaluate the difficulty of texts through number of syllables
 per word and sentence length. A FRES of about 50 could be seen as an average reading difficulty. The FRES has an upper
@@ -67,19 +74,19 @@ In this subsection we highlight some of the main results of the underlying work.
     \centering
     \begin{subfigure}[b]{.5\textwidth}
         \centering
-        \includegraphics[width=\textwidth, scale=0.32]{figures/tracking_kind_trans.png}
+        \includegraphics[width=\textwidth, scale=0.27]{figures/tracking_kind_trans.png}
         \caption{Kind of tracking observed.\\Figure by \citeauthor{sanchez2019can}~\cite[Fig.~1]{sanchez2019can}.}
         \label{fig:tracking_kind}
     \end{subfigure}
     \begin{subfigure}[b]{.5\textwidth}
         \centering
-        \includegraphics[width=\textwidth, scale=0.35]{figures/cookie_notice_size_trans.png}
+        \includegraphics[width=\textwidth, scale=0.3]{figures/cookie_notice_size_trans.png}
         \caption{The size of the cookie notice.\\Figure by \citeauthor{sanchez2019can}~\cite[Fig.~2a]{sanchez2019can}.}
         \label{fig:notice_size}
     \end{subfigure}
     \begin{subfigure}[b]{.5\textwidth}
         \centering
-        \includegraphics[width=\textwidth, scale=0.35]{figures/cookie_notice_type_trans.png}
+        \includegraphics[width=\textwidth, scale=0.3]{figures/cookie_notice_type_trans.png}
         \caption{Type of cookie notice.\\Figure by \citeauthor{sanchez2019can}~\cite[Fig.~2b]{sanchez2019can}.}
         \label{fig:notice_type}
     \end{subfigure}
@@ -106,13 +113,12 @@ Chinese websites do not display any cookie consent notice.
 
 \autoref{fig:notice_type} shows the type of cookie consent notice as discussed in \autoref{subsec:methodology}.
 We can observe that most websites do not have an easy way to opt-out. The best practices like \emph{AcceptReject} and
-\emph{JustSettings} are almost not present in any cookie consent notice. If a website has a cookie consent notice, it
-most likely just informs the user that cookies are being used.
+\emph{JustSettings} notices are substantially low. If a website has a cookie consent notice, it
+most likely just informs the user that cookies are being used. This shows that the GDPR had the impact of getting more
+cookie consent notices onto websites, but these are often useless as they are not conform with the GDPR and users are
+tracked even if they reject.
 
-This shows that the GDPR had the impact of getting more
-cookie consent notices onto websites, but these are often useless as they are not conform wit the GDPR and users are
-tracked even if they reject anyway.
-
+\TODO{limitations}
 A critique point here is that the evaluation of \ca{sanchez2019can} is lacking a proper comparison of the time before
 the GDPR and the time after. They only show their results in a post GDPR world leading to some statements being out of
 context (e.g. There are no numbers on how many cookie consent notices there were in the EU before the GDPR).
@@ -138,7 +144,7 @@ In total, they looked at the privacy policies of 849 policies written in English
 \autoref{tab:policies} shows the evaluation they performed on privacy policies. With an average FRES of 54.1, the
 policies are still below the threshold of about 60 to 70 which is the score you want for the general public. On the
 other hand \ca{jensen2004privacy} provide an average of 34.2 on their dataset in 2004 which shows that privacy policies
-have gotten more readable. We can make the same observation with the FKRL. \citeauthor{sanchez2019can} get to an average
+have gotten more readable from 2004 to 2018 after the GDPR. We can make the same observation with the FKRL. \citeauthor{sanchez2019can} get to an average
 of 11.1 on their dataset and in comparison to the 14.2 by \ca{jensen2004privacy}. Again, the FKRL does not meet the
 ideal threshold of about 8, but it still improved over the years. These observations show that the GDPR did not only have
 an impact on cookie consent notices, but also on privacy policies. Still the privacy policies of most websites are

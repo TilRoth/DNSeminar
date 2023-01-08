@@ -13,29 +13,27 @@ the core aspects of the GDPR and how tracking should be handled according to the
 HTTP is a stateless protocol meaning that it cannot remember information from previous HTTP requests. In practice this
 can be cumbersome. To make HTTP stateful, Netscape introduced cookies. This initial proposal was then refined by the
 \emph{Internet Engineering Task Force} (IETF) \cite{rfc6265}. A cookie is a small piece of data often containing a name,
-a value, a corresponding URL and a time to live. The HTTP headers Cookie and Set-Cookie are used by the server and the user agent to
+a value, a corresponding URL and a time to live. The HTTP headers Cookie, Set-Cookie are used by the server and the user agent to
 exchange cookies. The HTTP server sets cookies in the browser of the user agent and if the user agent sends another HTTP
-request, he sends the cookie back letting the server know to which session he belongs. This mechanism enables stateful
-HTTP and common features like "shopping carts" and "stay logged in".
+request to that server, corresponding cookies are sent along such that the server can identify the user and act accordingly. This
+mechanism enables stateful HTTP and common features like "shopping carts" and "stay logged in".
 
 Since cookies can be used to uniquely identify users, companies started using cookies not only to enable useful features
-for user agents but also for tracking users across websites. The collected data is valuable since it can be used for
-personalized advertisement and analytics. The basic idea is that a third-party site pays different websites in order to be
-able to set an identifier cookie on the users accessing the sites. If the identifier then appears on associated
-websites, the third-party can reconstruct the browsing history of a user. The more websites you can track across, the
-more accurate you can see the online activity of a user making the data more valuable for personalized ads.
+(e.g. shopping carts) for user agents but also for tracking users across websites. The collected data of the tracked
+users is valuable since it can be used for
+personalized advertisement and analytics. The basic idea is that a third-party site sets an identifier cookie on a
+user accessing a website. If the identifier then appears on other websites, the third-party can identify the user
+through the cookie and can thus reconstruct the browsing history of a user.
 
 \paragraph{Fingerprinting.}
 
-Tracking through fingerprinting is generally harder than cookie tracking but can also be more effective. A company
-creates a fingerprint of you by looking at the combination of different factors that can uniquely identify you. This can
-be e.g. the browser you are using, the browser add-ons, hardware in use and preferences. For instance, if you use a new
-common Laptop with a clean Firefox browser, you are less
+Tracking through fingerprinting is generally harder to implement than cookie tracking but can also be more effective. A company
+creates a fingerprint of a user by looking at the combination of different factors that can uniquely identify a user. This can
+be e.g. the browser in use, the browser add-ons, hardware in use and preferences. For instance, if a user browses the
+web on a new common Laptop with a clean Firefox browser, this user is less
 likely to be unique than someone with 20 add-ons and a browser that hardly anyone uses on a custom build PC.
-You can include an arbitrary amount of these factors to make users more unique. It is harder to counter fingerprinting
-than cookie tracking. For cookie tracking, you can delete cookies in your browser and try to block known third-party
-trackers. For fingerprinting, it is harder since the tracking is done out of your control and with almost no ability to
-intervene at any point.
+Websites include an arbitrary amount of these factors to make users more unique. It is harder to counter fingerprinting
+than cookie tracking.
 
 \subsection{GDPR}
 
@@ -43,30 +41,31 @@ On May 25th, 2018 the \emph{General Data Protection Regulation} (GDPR) was appli
 legislation that is supposed to provide users the means to protect their privacy on the internet. In this section we try
 to outline the main ideas of the GDPR concerned with cookie tracking of users and privacy policies.
 
-The GDPR had a major impact on the handling of user data by websites inside and outside the EU. This is the first
+\textbf{The GDPR had a major impact on the handling of user data by websites inside and outside the EU.} This is the first
 aspect that is of interest to us. The GDPR not only restricts websites in the EU but has an extraterritorial scope.
 It specifies that not only EU websites need to follow the guidelines for handling user data but also websites not in the
 EU processing data of citizens of the EU.
 
-The GDPR applies to user data which can be attributed to an \emph{identifiable natural person} meaning that anonymous
-data is not considered. Pseudonymous data however is also seen as identifiable because with additional information
+\textbf{The GDPR applies to user data which can be attributed to an \emph{identifiable natural person} meaning that anonymous
+data is not considered.} Pseudonymous data however is also seen as identifiable because with additional information
 the data could be de-anonymized. This implies that not only the tracking itself is illegal but also the collecting of data
 which could in theory be used to track a user. This rule specifically targets tracking cookies since their purpose is
 solely to uniquely identify a user. The GDPR does not differentiate between third-party or first-party trackers.
-Generally every cookie with a large enough entropy is affected by this part of the GDPR.
+Generally every cookie with a large enough entropy (value is so long that it is pretty much impossible that it is not
+unique) is affected by this part of the GDPR because it could in theory be used to track a user.
 
-Personal data should not be stored longer than necessary. The GDPR specifies that the time of holding personal data of
+\textbf{Personal data should not be stored longer than necessary.} The GDPR specifies that the time of holding personal data of
 users should be kept to a minimum. This is usually 12 months.
 
-User consent must be explicit. Websites often give you a notice, that the website uses cookies and an "OK" button
-indicating that if a user continues browsing, he accepts cookies (implicit consent). The GDPR states that the consent must be explicit
-meaning that the website must not collect personal data before the user explicitly accepts it. Some websites realize
-this by having a blocking popup not allowing you to access the site until you accept or decline. You should not
+\textbf{User consent must be explicit.} Websites often give you a notice, that the website uses cookies and an "OK" button
+indicating that if a user continues browsing, he accepts cookies (implicit consent). The GDPR states
+that websites must not collect personal data before the user explicitly accepts it. Some websites realize
+this by having a popup where a user can accept or decline cookie tracking. You should not
 \emph{opt-out} but rather \emph{opt-in}. Often, websites track you until you \emph{opt-out} (revoke consent) violating
 the GDPR. An important addition: Websites must not refuse to serve a user because he does not give consent. Without this
-addition, the explicit consent would not be free, because the user would have no free choice.
+addition, the explicit consent would not be free, as the user has no choice if he needs to access the website.
 
-Finally, privacy policies should be transparent and easily accessible. Often, websites phrase their privacy policy
+\textbf{Privacy policies should be transparent and easily accessible.} Often, websites phrase their privacy policy
 extra complicated, so people do not bother to read it or do not understand it. The GDPR specifies that the privacy policy
 should be expressed in a clear language such that everyone can understand it.
 

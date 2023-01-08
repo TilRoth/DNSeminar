@@ -4,14 +4,12 @@
 The \emph{General Data Protection Regulation} (GDPR) was issued on the 25th of May by the European Union. The goal is to
 have a clear regulation on how websites need to handle user data. Almost every website performs some kind of tracking on
 users and the GDPR wants to clarify that this tracking without any consent is illegal because tracking poses a risk on
-privacy since you can reconstruct a users browsing history. As a result of this many
+privacy. For instance, you can reconstruct a users browsing history via cookie tracking. As a result of the GDPR, many
 websites updated their privacy policies and users were flooded with emails. Cookie consent notices also have become more
 common where websites first ask you whether you accept or decline non-essential cookies (i.e. tracking or analytical
-cookies).
-
-One may think that there is less tracking now due to the consent notices, but the reality is that most websites still
-deploy tracking cookies even if you decline. Personalized advertisement is a huge market and most websites get a large
-part of their revenue through personalized advertisements. \ca{utz2019informed} propose that less than 0.1\% of users
+cookies). Despite the legal requirements of the GDPR, most websites still deploy tracking cookies even if you decline
+non-essential cookies. Personalized advertisement is a huge market and most websites get a large
+part of their revenue through it. \ca{utz2019informed} propose that less than 0.1\% of users
 would accept being tracked if the consent notice has a clear \emph{Accept} and \emph{Decline} button. For websites, this
 means that a large part of their revenue would just be lost. The fines they face if they violate the GDPR are smaller
 than the revenue they would otherwise lose. This incentivizes misleading cookie consent notices and dark patterns like
@@ -22,4 +20,23 @@ The main focus of papers in this area is to evaluate whether and how accurately 
 GDPR and in how far the GDPR helps users to have more control over their privacy on the internet.
 In the remainder of this report we will discuss the contributions of \ca{sanchez2019can} and put them into context
 with related work in this area.
+
+\citeauthor{sanchez2019can} extend the contributions of previous work about the GDPR and cookie control. They show that
+the GDPR has a global impact from the perspective of a user from the EU whereas related work only looks at the impact on
+websites in the EU from the perspective of users from within and outside the EU. Another interesting novelty is the
+detection method for uniquely identifiable tracking cookies. Typically, trackers are detected by known tracker lists.
+Other papers do not differentiate between tracker cookies and non-tracker cookies, but consider the general number of
+cookies. \citeauthor{sanchez2019can} detect tracker cookies by considering whether a cookie could be used to uniquely
+identify a user via the entropy of the value of the cookie. With this technique, they can identify trackers which are not on known
+tracker lists and first party trackers which otherwise could be overseen. They evaluate privacy policies of the top
+websites with the \emph{Flesch Reading Ease Score} (FRES)~\cite{flesch1948new}
+and the \emph{Flesch-Kincaid Reading Level} (FKRL)~\cite{kincaid1975derivation}.
+This was done before the GDPR and \citeauthor{sanchez2019can} compare the previous results to the results after the
+GDPR.
+
+The results show that the GDPR had a truly global impact. Websites in the USA and EU-based websites are affected
+similarly. 50\% of websites in the EU and around 30\% in the USA have a cookie consent notice. Still, around 90\% of the
+websites still deploy tracking cookies without consent of the user.
+Privacy policies have gotten more readable after the GDPR with a FRES of 54.1 and a FKRL of 11.1 compared to 2004 where they had a
+FRES of 34.2 and a FKRL of 14.2. The reults will be discussed in more detail in \autoref{sec:underlying}.
 
