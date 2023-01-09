@@ -36,14 +36,16 @@ websites which link to third-party opt-out services(e.g. youronlinechoices), the
 cookie behavior.
 
 The identification of tracking cookies was done through measuring the entropy of the value of a cookie with
-\texttt{zxcvbn} \cite{wheeler2016zxcvbn}. If the entropy is high enough to distinguish you from 1 Billion people, they
+\texttt{zxcvbn} \cite{wheeler2016zxcvbn}, a tool for password strength estimation.
+If the entropy is high enough to distinguish you from 1 Billion people, they
 consider it a tracking cookie. This is a rather new approach to the problem of identifying tracking cookies.
 On one hand you can detect cookies which with other methods could have been missed, but on the other hand you can get false positives
 where the cookie was not a tracker, but it was still classified as one. The latter is not a problem in our case since the
 GDPR specifies that cookies which carry information that in theory could identify you still require consent except if
-they are essential (e.g. shopping cart) even if they are not used as tracking cookies. In the evaluation we do not use any functionality of a
+they are essential (e.g. shopping cart) even if they are not used as tracking cookies. In the evaluation
+\citeauthor{sanchez2019can} do not use any functionality of a
 website which requires any essential trackers (e.g. like shopping carts) meaning that there is almost no possibility
-that we should get an essential tracking cookie.
+that they should get an essential tracking cookie.
 A more common approach is to make use of lists of known third-party trackers. This approach cannot reliably identify
 first-party trackers and can miss some unknown third-parties. \citeauthor{sanchez2019can} use third-party tracker lists
 to classify their found trackers (first-party, third-party and unknown).
@@ -52,7 +54,7 @@ The GDPR requires privacy policies to be readable. A privacy policy is a legal d
 a website handles the data of a user accessing the site. Privacy policies are typically found on the bottom
 of a website through a link. Often, the privacy settings (e.g. cookie control) are only presented
 in the privacy policy section of a website. While performing their manual analysis on consent notices,
-\citeauthor{sanchez2019can} also copy the privacy policy of a website if present. They evaluate the difficulty of
+\citeauthor{sanchez2019can} also copy the privacy policy of a website if present. They evaluate the reading difficulty of
 privacy policies with
 two metrics, the \emph{Flesch Reading Ease Score} (FRES)~\cite{flesch1948new} and the \emph{Flesch-Kincaid Reading
 Level} (FKRL)~\cite{kincaid1975derivation}. Both metrics evaluate the difficulty of texts through number of syllables
@@ -118,6 +120,7 @@ cookie consent notices onto websites, but these are often useless as they are no
 tracked even if they reject.
 
 \subsubsection{Privacy Policies}
+\label{subsub:priv}
 
 \begin{table}
     \begin{tabular}{ l r r r r }
@@ -134,7 +137,7 @@ tracked even if they reject.
     \label{tab:policies}
 \end{table}
 
-In total, they looked at the privacy policies of 849 policies written in English. Other languages are omitted.
+In total, they looked at 849 privacy policies written in English. Other languages are omitted.
 \autoref{tab:policies} shows the evaluation they performed on privacy policies. With an average FRES of 54.1, the
 policies are still below the threshold of about 60 to 70 which is the score you want for the general public. On the
 other hand \ca{jensen2004privacy} provide an average of 34.2 on their dataset in 2004 which shows that privacy policies
@@ -142,6 +145,7 @@ have gotten more readable from 2004 to 2019 after the GDPR. We can make the same
 of 11.1 on their dataset and in comparison to the 14.2 by \ca{jensen2004privacy}. Again, the FKRL does not meet the
 ideal threshold of about 8, but it still improved over the years. These observations show that the GDPR did not only have
 an impact on cookie consent notices, but also on privacy policies. Still the privacy policies of most websites are
-rather lengthy (on average 2,250 words). People often do not read the privacy policy due to the length of it rendering
-the better readability rather unimportant.
+rather lengthy (on average 2,250 words). People often do not read the privacy policy due to the length and the
+reading difficulty still being too high. \ca{mcdonald2009comparative} have shown in a study that many people still have
+problems understanding privacy policies with a FRES of 46.
 
