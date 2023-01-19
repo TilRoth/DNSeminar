@@ -1,4 +1,4 @@
-\section{Background}
+\section{Technical Background}
 \label{sec:background}
 
 In this section we give a basic introduction into the techniques used for tracking on websites, namely cookies and
@@ -37,22 +37,22 @@ than cookie tracking.
 
 \subsection{GDPR}
 
-On May 25th, 2018 the \emph{General Data Protection Regulation} (GDPR) was applied by the European Union. It is an EU
+On May 25th, 2018 the \emph{General Data Protection Regulation} (GDPR)~\cite{EUdataregulations2018} was applied by the European Union. It is an EU
 legislation that is supposed to provide users the means to protect their privacy on the internet. In this section we try
 to outline the main ideas of the GDPR concerned with cookie tracking of users and privacy policies.
 
-\textbf{The GDPR had a major impact on the handling of user data by websites inside and outside the EU.} This is the first
-aspect that is of interest to us. The GDPR not only restricts websites in the EU but has an extraterritorial scope.
-It specifies that not only EU websites need to follow the guidelines for handling user data but also websites not in the
-EU processing data of citizens of the EU.
-
-\textbf{The GDPR applies to user data which can be attributed to an \emph{identifiable natural person} meaning that anonymous
-data is not considered.} Pseudonymous data however is also seen as identifiable because with additional information
+\textbf{The GDPR applies to user data which can be attributed to an \emph{identifiable natural person}.}
+Anonymous data is not considered. Pseudonymous data however is also seen as identifiable because with additional information
 the data could be de-anonymized. This implies that not only the tracking itself is illegal but also the collecting of data
 which could in theory be used to track a user. This rule specifically targets tracking cookies since their purpose is
 solely to uniquely identify a user. The GDPR does not differentiate between third-party or first-party trackers.
 Generally every cookie with a large enough entropy (value is so long that it is pretty much impossible that it is not
 unique) is affected by this part of the GDPR because it could in theory be used to track a user.
+
+\textbf{The GDPR impacts the handling of user data by websites inside and outside the EU.} This is the first
+aspect that is of interest to us. The GDPR not only restricts websites in the EU but has an extraterritorial scope.
+It specifies that not only EU websites need to follow the guidelines for handling user data but also websites not in the
+EU processing data of citizens of the EU.
 
 \textbf{Personal data should not be stored longer than necessary.} The GDPR specifies that the time of holding personal data of
 users should be kept to a minimum. This is usually 12 months.

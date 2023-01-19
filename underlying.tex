@@ -12,10 +12,47 @@ the impact of the GDPR on the ability of a user to control their privacy online.
 
 The target list of their analysis are the Alexa top-1M websites, a list by amazon showing the top 1 million websites with
 the most traffic according to the Alexa Traffic Rank. From this list, they look at 2000 websites across different
-categories from some of the top traffic websites.
+categories from some of the top traffic websites. The location of the website is determined by the top-level domain 
+if it corresponds to a country and otherwise through IP geolocation with \texttt{ip-api.com} despite being inaccurate at
+times \cite{weinberg2018catch}. They chose the top 100 websites of a category with the top 20 categories being determined
+by Symantec RuleSpace~\cite{symantec} resulting in 2000 websites. \autoref{tab:websites} shows the categories broken
+down by region. We can observe that most of the websites reside in the USA. In the remainder of the evaluation we will omit the
+results comparing the different categories since this would be outside the scope of this report.
+
+\begin{table}
+    \begin{tabular}{ l  r  r  r  r}
+        \hline
+        & EU & USA & China & Others\\
+        \hline
+        Business & 18\% & 52\% & 8\% & 21\%\\
+        Entertainment & 24\% & 53\% & 5\% & 18\%\\
+        Finance & 30\% & 27\% & 10\% & 33\%\\
+        Food & 27\% & 49\% & 10\% & 14\%\\
+        Gaming & 28\% & 53\% & 8\% & 11\%\\
+        Government & 28\% & 32\% & - & 40\%\\
+        Health & 18\% & 57\% & 16\% & 9\%\\
+        Hobby & 21\% & 56\% & 7\% & 16\%\\
+        Kids & 35\% & 57\% & 1\% & 7\%\\
+        News & 25\% & 35\% & 11\% & 29\%\\
+        Politics & 15\% & 65\% & - & 20\%\\
+        Pornography & 31\% & 52\% & 1\% & 16\%\\
+        Real Estate & 26\% & 37\% & 12\% & 25\%\\
+        Religion & 12\% & 63\% & - & 25\%\\
+        Science & 35\% & 47\% & 7\% & 11\%\\
+        Shopping & 35\% & 30\% & 10\% & 25\%\\
+        Sports & 48\% & 25\% & 1\% & 26\%\\
+        Technology & 11\% & 66\% & 9\% & 14\%\\
+        Travel & 37\% & 36\% & 9\% & 18\%\\
+        Weapons & 15\% & 72\% & 1\% & 12\%\\
+        \hline
+    \end{tabular}
+    \caption{Websites by region and category. Table by \citeauthor{sanchez2019can}~\cite[Tab.~1]{sanchez2019can}}
+    \label{tab:websites}
+\end{table}
 
 The data collection was done manually. This means that \citeauthor{sanchez2019can} went through all the 2000 websites
-manually with a browser and noted features of the website. By doing this manually, you are less likely to miss any cookie notice.
+manually with a browser and noted features of the website. The only thing that was automated was the collection of the
+cookies while visiting the website via a browser extension. By doing this manually, you are less likely to miss any cookie notice.
 Cookie consent notices can differ tremendously from one website to another making it hard to
 automate this task. On the other hand, collecting the data manually makes it harder to recreate the data they produced
 and harder to look at different features afterwards because it takes a long time to do this task manually.
@@ -95,6 +132,14 @@ In this subsection we highlight some of the main results of the underlying work.
     \label{fig:cookie_stats}
 \end{figure}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.48\textwidth, scale=0.1]{figures/third_party_trans.png}
+    \caption{Number of cookie identifiers after opt-out through third-party service. Figure by
+    \citeauthor{sanchez2019can}~\cite[Fig.~2b]{sanchez2019can}.}
+    \label{fig:third_party}
+\end{figure}
+
 \autoref{fig:cookie_stats} shows the evaluations of the underlying work that we want to focus on.
 
 \autoref{fig:tracking_kind} illustrates the kind of tracking on the visited websites. We can observe that about 92\% of
@@ -109,8 +154,7 @@ website and no cookie consent notice (splitting websites that do perform trackin
 cookie consent notice). The GDPR specifies that consent must be explicit before any kind of tracking is performed
 (opt-in instead of opt-out) meaning that no cookie consent notice despite tracking is illegal.
 We can see in \autoref{fig:notice_size} that around 57\% of EU websites and 32\% of US
-websites have some form of cookie notice showing that the GDPR has an impact on the amount of cookie notices.
-Chinese websites do not display any cookie consent notice.
+websites have some form of cookie notice. Chinese websites do not display any cookie consent notice.
 
 \autoref{fig:notice_type} shows the type of cookie consent notice as discussed in \autoref{subsec:methodology}.
 We can observe that most websites do not have an easy way to opt-out. The best practices like \emph{AcceptReject} and
@@ -118,6 +162,13 @@ We can observe that most websites do not have an easy way to opt-out. The best p
 most likely just informs the user that cookies are being used. This shows that the GDPR had the impact of getting more
 cookie consent notices onto websites, but these are often useless as they are not conform with the GDPR and users are
 tracked even if they reject.
+
+\autoref{fig:third_party} depicts the amount of cookies after opting out through third-party servises (e.g.
+youronlinechoices). By opting out through third-party services, the number of identifier cookies often decreases
+(\emph{Opt-out some}) but only on about 3\% of websites the tracking is completely blocked (\emph{Opt-out all}). We can
+however see that third-party opt-out services help in reducing the number of identifier cookies in China. This is an
+interesting observation since websites in China typically do not show any cookie consent notice or give a user the
+option to opt-out.
 
 \subsubsection{Privacy Policies}
 \label{subsub:priv}
