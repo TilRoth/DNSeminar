@@ -5,18 +5,10 @@ In this section we highlight related work in the field. There are many papers re
 the legal compliance of websites. We show the methodology and results of related papers and put the underlying
 work~\cite{sanchez2019can} into context.
 
-In 2018 \ca{degeling2018we} conducted a similar study to the one of \ca{sanchez2019can}. They evaluate the impact of the
-GDPR on cookie consent notices and privacy policies. They only target websites inside the EU, and their domain are the
-Alexa top-1M websites. The data collection for the cookie consent notices is manual meaning that
-\citeauthor{degeling2018we} went through the websites of their domain by hand, and for privacy policies it is
-semi-automated meaning that they tried to collect every privacy policy automated and if there was an error, they tried
-it by hand. \citeauthor{degeling2018we} conclude that after the GDPR there are more readable privacy policies
-and there are more cookie consent notices. However, they also say that these cookie notices may give users a false sense
-of privacy and security since they often only inform the user that they are being tracked without the means to prevent
-that. Users do not have more privacy online by only being informed that they are being tracked. The work of
-\ca{sanchez2019can} follows a very similar methodology and reach a similar conclusion. They extend the work of
-\ca{degeling2018we} by also taking international websites into account and observing the actual tracking that is being
-performed after navigating through the cookie consent notice.
+\subsection{Tracking}
+
+Related work on tracking in this field focuses on the impact of the GDPR on tracking on users. Additionally, an important
+part is tracking without consent of the user in the context of the GDPR.
 
 The \emph{whotracks.me} database released a blog post~\cite{whathappened} where they discuss the impact of the GDPR.
 This database is based on real user data creating a realistic image of the situation. They compare USA-based websites to
@@ -36,6 +28,34 @@ top-1M list, and they perform an automatic data collection by crawling the top 1
 additionally differentiate between tracking cookies and other cookies like \ca{sanchez2019can}. They conclude that EU
 visitors are less likely to receive persistent cookies without consent. 49.3\% of websites of the top 1000 websites
 according to Alexa do not set cookies without consent on EU visitors, when they would set them for visitors from the USA.
+
+A paper similar to \ca{sanchez2019can} is the one by \ca{trevisan20194} evaluating whether websites comply
+with GDPR also in respect to tracking without consent. They provide a tool named \emph{CookieCheck} to perform this task
+automated. The identification of third-party tracking cookies is done through known third-party tracker lists. Their
+results of 49\% of websites tracking without consent differ from the ones of \citeauthor{sanchez2019can} which are about
+90\% of websites tracking without consent. This can be due to the target list because \citeauthor{trevisan20194} also
+look at different categories than \citeauthor{sanchez2019can} and the identification of trackers (known third-party
+lists vs \texttt{zxcvbn}~\cite{wheeler2016zxcvbn}). The result 49\% tracking without consent of
+\citeauthor{trevisan20194} however matches the result of \ca{matte2020cookie}, who conclude that about 54\% of cookie consent
+banners violate the GDPR by e.g. storing consent when the user opts-out.
+
+\subsection{Cookie Consent Notices}
+
+Related work on cookie consent notices is concerned with the legal compliance of websites with the cookie consent notice
+format, the GDPR proposes or the psychological aspects of cookie consent notices on user behavior.
+
+In 2018 \ca{degeling2018we} conducted a similar study to the one of \ca{sanchez2019can}. They evaluate the impact of the
+GDPR on cookie consent notices and privacy policies. They only target websites inside the EU, and their domain are the
+Alexa top-1M websites. The data collection for the cookie consent notices is manual meaning that
+\citeauthor{degeling2018we} went through the websites of their domain by hand, and for privacy policies it is
+semi-automated meaning that they tried to collect every privacy policy automated and if there was an error, they tried
+it by hand. \citeauthor{degeling2018we} conclude that after the GDPR there are more readable privacy policies
+and there are more cookie consent notices. However, they also say that these cookie notices may give users a false sense
+of privacy and security since they often only inform the user that they are being tracked without the means to prevent
+that. Users do not have more privacy online by only being informed that they are being tracked. The work of
+\ca{sanchez2019can} follows a very similar methodology and reach a similar conclusion. They extend the work of
+\ca{degeling2018we} by also taking international websites into account and observing the actual tracking that is being
+performed after navigating through the cookie consent notice.
 
 In 2020 \ca{nouwens2020dark} look into the design of cookie consent notices and detect dark patterns. A dark pattern is
 a user interface that tricks users into desired behavior of the designers. They are not
@@ -63,15 +83,6 @@ requirements for websites to be legally compliant by \citeauthor{nouwens2020dark
 They additionally provide a browser extension named \emph{Cookie Glasses} which can be used to detect the previously
 mentioned violations on websites.
 
-Another paper similar to \ca{sanchez2019can} is the one by \ca{trevisan20194} evaluating whether websites comply
-with GDPR also in respect to tracking without consent. They provide a tool named \emph{CookieCheck} to perform this task
-automated. The identification of third-party tracking cookies is done through known third-party tracker lists. Their
-results of 49\% of websites tracking without consent differ from the ones of \citeauthor{sanchez2019can} which are about
-90\% of websites tracking without consent. This can be due to the target list and the identification of trackers,
-as \citeauthor{sanchez2019can} specified that their approach of identifying trackers is conservative. 49\% of
-\citeauthor{trevisan20194} matches the result of \ca{matte2020cookie}, who conclude that about 54\% of cookie consent
-banners violate the GDPR by e.g. storing consent when the user opts-out.
-
 \ca{utz2019informed} performed a field study on the topic of cookie consent notices. They partnered with a german
 e-commerce website with about 15,000 to 20,000 unique visitors per month in order to monitor the effects of different
 cookie consent notices on users. This is an interesting setup since it is the first large-scale field study in this
@@ -86,8 +97,12 @@ patterns and nudging has proven to work in getting more users to accept cookies.
 notice design specified by the GDPR is unrealistic because only 0.1\% of users would actually consent which is why many
 websites implement dark patterns.
 
-Related work on privacy policies evaluates the reading difficulty of privacy policies. \ca{jensen2004privacy} were among
-the first to evaluate the reading difficulty using the FRES~\cite{flesch1948new} and FKRL~\cite{kincaid1975derivation} metrics.
+\subsection{Privacy policies}
+
+Related work on privacy policies mainly evaluates the reading difficulty of privacy policies.
+
+\ca{jensen2004privacy} were among the first to evaluate the reading difficulty using the FRES~\cite{flesch1948new} and
+FKRL~\cite{kincaid1975derivation} metrics.
 Their target list of websites was the "comScore Media Metrix Top 50 U.S. Internet Property Ranking".
 They looked at 64 different privacy policies of the target list and some sites from a previous study and got
 an average FRES of about 34.2 and an average FKRL of about 14.2.
