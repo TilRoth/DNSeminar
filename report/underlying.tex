@@ -71,8 +71,9 @@ The different types of consent notices are:
 \end{enumerate}
 Cookie consent notices can be blocking and non-blocking meaning that users can access the website while the consent notice pops up for
 non-blocking, and users cannot access the website until they have made a choice for blocking cookie consent notices. Some
-websites link to third-party opt-out services (e.g. youronlinechoices) for cookie control. \citeauthor{sanchez2019can}
-used the service and observed the cookie behavior.
+websites link to third-party opt-out services (e.g. youronlinechoices) for cookie control. Third-party opt-out services
+are external websites which have a list of known third-party trackers and offer users to opt-out of the trackers in
+the list. \citeauthor{sanchez2019can} used the service if provided and observed the cookie behavior.
 
 \paragraph{Identifying Tracking Cookies.}
 The identification of tracking cookies was done through measuring the entropy of the value of a cookie with
@@ -166,17 +167,19 @@ websites in the EU, 60\% of websites in the USA and 90\% of Chinese websites as 
 
 \autoref{fig:notice_type} shows the type of cookie consent notice as discussed in \autoref{subsec:methodology}.
 We can observe that most websites do not have an easy way to opt-out. The best practices like \emph{AcceptReject} and
-\emph{JustSettings} notices are substantially low. If a website has a cookie consent notice, it
+\emph{JustSettings} notices are substantially low, as they are adding up to about 4\% of the consent notices.
+If a website has a cookie consent notice, it
 most likely just informs the user that cookies are being used. This shows that the GDPR had the impact of getting more
 cookie consent notices onto websites, but these are often useless as they are not conform with the GDPR and users are
 tracked even if they reject.
 
-\autoref{fig:third_party} depicts the amount of cookies after opting out through third-party servises (e.g.
-youronlinechoices). By opting out through third-party services, the number of identifier cookies often decreases
+\autoref{fig:third_party} depicts the amount of cookies after opting out through third-party services (e.g.
+youronlinechoices). The number of identifier cookies often decreases
 (\emph{Opt-out some}) but only on about 3\% of websites the tracking is completely blocked (\emph{Opt-out all}). We can
 however see that third-party opt-out services help in reducing the number of identifier cookies in China. This is an
 interesting observation since websites in China typically do not show any cookie consent notice or give a user the
-option to opt-out.
+option to opt-out. A point of critique is that this figure does not highlight what percentage of cookies are opted-out
+in the \emph{Opt-out some} category.
 
 \subsubsection{Privacy Policies}
 \label{subsub:priv}
@@ -200,8 +203,9 @@ In total, they looked at 849 privacy policies written in English. Other language
 \autoref{tab:policies} shows the evaluation they performed on privacy policies. With an average FRES of 54.1, the
 policies are still below the threshold of about 60 to 70 which is the desired score for the general public. On the
 other hand \ca{jensen2004privacy} provide an average of 34.2 on their dataset in 2004 which shows that privacy policies
-have gotten more readable from 2004 to 2019 after the GDPR. We can make the same observation with the FKRL. \citeauthor{sanchez2019can} get to an average
-of 11.1 on their dataset and in comparison to the 14.2 by \ca{jensen2004privacy}. Again, the FKRL does not meet the
+have gotten more readable from 2004 to 2019 after the GDPR. We can make the same observation with the FKRL. The
+evaluations of \citeauthor{sanchez2019can} show an average
+of 11.1 on their dataset in comparison to 14.2 by \ca{jensen2004privacy}. Again, the FKRL does not meet the
 ideal threshold of about 8, but it still improved over the years. These observations show that the GDPR did not only have
 an impact on cookie consent notices, but also on privacy policies. Still the privacy policies of most websites are
 rather lengthy (on average 2,250 words). People often do not read the privacy policy due to the length and the
