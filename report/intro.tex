@@ -16,7 +16,8 @@ than the revenue they would otherwise lose. This incentivizes misleading cookie 
 hiding the \emph{Decline} option behind different layers, having to unmark already marked checkboxes and performing
 tracking without consent.
 
-The main focus of papers in this area is to evaluate whether and how accurately websites follow the guidelines of the
+The main focus of papers in this area \cite{degeling2018we}~\cite{trevisan20194}~\cite{nouwens2020dark}
+is to evaluate whether and how accurately websites follow the guidelines of the
 GDPR and in how far the GDPR helps users to have more control over their privacy on the internet.
 In the remainder of this report we will discuss the contributions of \ca{sanchez2019can} and put them into context
 with related work in this area.
@@ -25,18 +26,20 @@ with related work in this area.
 the GDPR has a global impact from the perspective of a user from the EU whereas related work only looks at the impact on
 websites in the EU from the perspective of users from within and outside the EU. Another interesting novelty is the
 detection method for uniquely identifiable tracking cookies. Typically, trackers are detected by known tracker lists.
-Other papers do not differentiate between tracker cookies and non-tracker cookies, but consider the general number of
+Some papers do not differentiate between tracker cookies and non-tracker cookies, but consider the general number of
 cookies. \citeauthor{sanchez2019can} detect tracker cookies by considering whether a cookie could be used to uniquely
-identify a user via the entropy of the value of the cookie. With this technique, they can identify trackers which are not on known
+identify a user via the entropy of the value of the cookie (e.g. the cookie value is a long string).
+With this technique, they can identify trackers which are not on known
 tracker lists and first-party trackers which otherwise could be overseen. They evaluate privacy policies of the top
 websites with the \emph{Flesch Reading Ease Score} (FRES)~\cite{flesch1948new}
 and the \emph{Flesch-Kincaid Reading Level} (FKRL)~\cite{kincaid1975derivation}.
-This was done before the GDPR and \citeauthor{sanchez2019can} compare the previous results to the results after the
-GDPR.
+The evaluation of the reading difficulty of privacy policies was done before the GDPR and \citeauthor{sanchez2019can}
+compare these previous results to their results after the GDPR.
 
-The results show that the GDPR had a truly global impact. Websites in the USA and EU-based websites are affected
-similarly. 57\% of websites in the EU and around 32\% in the USA have a cookie consent notice. Still, around 90\% of the
-websites still deploy tracking cookies without consent of the user.
+The results show that the GDPR had a global impact. Websites in the USA and EU-based websites are affected
+similarly. 57\% of websites in the EU and around 32\% in the USA have a cookie consent notice, but still only about 4\%
+of websites give you an easy way to opt-out while the other websites merely inform the user that they are being tracked.
+Still, around 90\% of the websites still deploy tracking cookies without consent of the user.
 Privacy policies have gotten more readable after the GDPR with a FRES of 54.1 and a FKRL of 11.1 compared to 2004 where they had a
-FRES of 34.2 and a FKRL of 14.2. The reults will be discussed in more detail in \autoref{sec:underlying}.
+FRES of 34.2 and a FKRL of 14.2. The results will be discussed in more detail in \autoref{sec:underlying}.
 

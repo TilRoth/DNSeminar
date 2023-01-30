@@ -10,13 +10,14 @@ the impact of the GDPR on the ability of a user to control their privacy online.
 \subsection{Methodology}
 \label{subsec:methodology}
 
+\paragraph{Setup.}
 The target list of their analysis are the Alexa top-1M websites, a list by amazon showing the top 1 million websites with
 the most traffic according to the Alexa Traffic Rank. From this list, they look at 2000 websites across different
 categories from some of the top traffic websites. The location of the website is determined by the top-level domain 
 if it corresponds to a country and otherwise through IP geolocation with \texttt{ip-api.com} despite being inaccurate at
 times \cite{weinberg2018catch}. They chose the top 100 websites of a category with the top 20 categories being determined
 by Symantec RuleSpace~\cite{symantec} resulting in 2000 websites. \autoref{tab:websites} shows the categories broken
-down by region. We can observe that most of the websites reside in the USA. In the remainder of the evaluation we will omit the
+down by region (EU, USA, China and others). We can observe that most of the websites reside in the USA. In the remainder of the evaluation we will omit the
 results comparing the different categories since this would be outside the scope of this report.
 
 \begin{table}
@@ -50,11 +51,12 @@ results comparing the different categories since this would be outside the scope
     \label{tab:websites}
 \end{table}
 
+\paragraph{Data Collection.}
 The data collection was done manually. This means that \citeauthor{sanchez2019can} went through all the 2000 websites
 manually with a browser and noted features of the website. The only thing that was automated was the collection of the
-cookies while visiting the website via a browser extension. By doing this manually, you are less likely to miss any cookie notice.
-Cookie consent notices can differ tremendously from one website to another making it hard to
-automate this task. On the other hand, collecting the data manually makes it harder to recreate the data they produced
+cookies while visiting the website via a browser extension. By manually collecting the data, they are less likely to miss any cookie notice.
+Cookie consent notices can differ from one website to another making it hard to
+automate the recognition of the type of cookie consent notice. On the other hand, collecting the data manually makes it harder to recreate the data they produced
 and harder to look at different features afterwards because it takes a long time to do this task manually.
 Manual analysis provides better error resistance but is
 less flexible and practical than automated analysis. The data they collect are the cookies set before interacting with the
@@ -67,18 +69,20 @@ The different types of consent notices are:
     \item \emph{AcceptReject}: There is an accept and a reject button.
     \item \emph{JustSettings}: There is a more complex settings dialog.
 \end{enumerate}
-Cookie consent notices can be blocking and non-blocking meaning that you can access the website while the consent notice pops up for
-non-blocking, and you cannot access the website until you have made a choice for blocking cookie consent notices. For
-websites which link to third-party opt-out services(e.g. youronlinechoices), they used the service and observed the
-cookie behavior.
+Cookie consent notices can be blocking and non-blocking meaning that users can access the website while the consent notice pops up for
+non-blocking, and users cannot access the website until they have made a choice for blocking cookie consent notices. Some
+websites link to third-party opt-out services (e.g. youronlinechoices) for cookie control. \citeauthor{sanchez2019can}
+used the service and observed the cookie behavior.
 
+\paragraph{Identifying Tracking Cookies.}
 The identification of tracking cookies was done through measuring the entropy of the value of a cookie with
 \texttt{zxcvbn}~\cite{wheeler2016zxcvbn}, a tool for password strength estimation.
-If the entropy is high enough to distinguish you from 1 Billion people, they
-consider it a tracking cookie. This is a rather new approach to the problem of identifying tracking cookies.
-On one hand you can detect cookies which with other methods could have been missed, but on the other hand you can get false positives
-where the cookie was not a tracker, but it was still classified as one. The latter is not a problem in our case since the
-GDPR specifies that cookies which carry information that in theory could identify you still require consent except if
+If the entropy is high enough to distinguish a user from 1 Billion people, they
+consider it a tracking cookie. This is a novelty in approaching the problem of identifying tracking cookies.
+On one hand \citeauthor{sanchez2019} can detect cookies which with other methods could have been missed, but on the
+other hand they can get false positives
+where the cookie was not a tracker, but it was still classified as one. The latter is not a problem in their case since the
+GDPR specifies that cookies which carry information that potentially could identify a user still require consent except if
 they are essential (e.g. shopping cart) even if they are not used as tracking cookies. In the evaluation
 \citeauthor{sanchez2019can} do not use any functionality of a
 website which requires any essential trackers (e.g. like shopping carts) meaning that there is almost no possibility
@@ -87,6 +91,7 @@ A more common approach is to make use of lists of known third-party trackers. Th
 first-party trackers and can miss some unknown third-parties. \citeauthor{sanchez2019can} use third-party tracker lists
 to classify their found trackers (first-party, third-party and unknown).
 
+\paragraph{Readability of Privacy Policies.}
 The GDPR requires privacy policies to be readable. A privacy policy is a legal document that discloses how
 a website handles the data of a user accessing the site. Privacy policies are typically found on the bottom
 of a website through a link. Often, the privacy settings (e.g. cookie control) are only presented
@@ -97,8 +102,8 @@ two metrics, the \emph{Flesch Reading Ease Score} (FRES)~\cite{flesch1948new} an
 Level} (FKRL)~\cite{kincaid1975derivation}. Both metrics evaluate the difficulty of texts through number of syllables
 per word and sentence length. A FRES of about 50 could be seen as an average reading difficulty. The FRES has an upper
 bound of 121.22 (greater equals easier text) and no theoretical lower bound. The FKRL can be interpreted as the years of
-formal education you need to fully understand a text. The FKRL has a lower bound of -1.3 and no
-theoretical upper bound. \ca{jensen2004privacy} also use these metrics making it easy to compare their results to the
+formal education someone needs to fully understand a text. The FKRL has a lower bound of -1.3 and no
+theoretical upper bound. \ca{jensen2004privacy} also use these metrics making it possible to compare their results to the
 results of this paper.
 
 \subsection{Evaluation}
@@ -144,17 +149,20 @@ In this subsection we highlight some of the main results of the underlying work.
 
 \autoref{fig:tracking_kind} illustrates the kind of tracking on the visited websites. We can observe that about 92\% of
 the websites perform some kind of tracking. This tracking is done before any consent is given and even after rejecting
-tracking cookies (opt-out). Many websites make use of third-party tracking and only a few use first-party tracking. We
-can also criticize this figure because we cannot see how many websites that use known third-party tracking also use
+tracking cookies (opt-out). The majority of trackers are using third-party cookies and only a few trackers use
+first-party cookies.
+We can also criticize this figure because we cannot see how many websites that use known third-party tracking also use
 first-party tracking because all websites that use third-party tracking are thrown into one category.
 
 \autoref{fig:notice_size} shows the size of the cookie notice differentiating between cookie consent notices which block
-you from accessing a website until you have made a choice on cookies, banners which do not block you from browsing the
+users from accessing a website until they have made a choice on cookies, banners which do not block users from browsing the
 website and no cookie consent notice (splitting websites that do perform tracking and websites that do not and have no
-cookie consent notice). The GDPR specifies that consent must be explicit before any kind of tracking is performed
-(opt-in instead of opt-out) meaning that no cookie consent notice despite tracking is illegal.
-We can see in \autoref{fig:notice_size} that around 57\% of EU websites and 32\% of US
+cookie consent notice).
+We can see that around 57\% of EU websites and 32\% of US
 websites have some form of cookie notice. Chinese websites do not display any cookie consent notice.
+The GDPR specifies that consent must be explicit before any kind of tracking is performed
+(opt-in instead of opt-out) meaning that no cookie consent notice despite tracking is illegal rendering about 35\% of
+websites in the EU, 60\% of websites in the USA and 90\% of Chinese websites as illegal.
 
 \autoref{fig:notice_type} shows the type of cookie consent notice as discussed in \autoref{subsec:methodology}.
 We can observe that most websites do not have an easy way to opt-out. The best practices like \emph{AcceptReject} and
@@ -190,7 +198,7 @@ option to opt-out.
 
 In total, they looked at 849 privacy policies written in English. Other languages are omitted.
 \autoref{tab:policies} shows the evaluation they performed on privacy policies. With an average FRES of 54.1, the
-policies are still below the threshold of about 60 to 70 which is the score you want for the general public. On the
+policies are still below the threshold of about 60 to 70 which is the desired score for the general public. On the
 other hand \ca{jensen2004privacy} provide an average of 34.2 on their dataset in 2004 which shows that privacy policies
 have gotten more readable from 2004 to 2019 after the GDPR. We can make the same observation with the FKRL. \citeauthor{sanchez2019can} get to an average
 of 11.1 on their dataset and in comparison to the 14.2 by \ca{jensen2004privacy}. Again, the FKRL does not meet the
