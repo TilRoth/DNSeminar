@@ -13,7 +13,7 @@
 \graphicspath{ {./figures/} }
 
 
-\date{tba}
+\date{February 23, 2023}
 \author{Til Roth}
 \title{Can I Opt Out Yet? \\GDPR and the Global Illusion of Cookie Control}
 \setbeamertemplate{footline}[page number]
@@ -25,20 +25,44 @@
 
 \section{Motivation}
 
+\begin{frame}
+    \centering
+    \includegraphics[scale=0.6]{example_notice.png}
+\end{frame}
+
 \begin{frame}{Cookie Consent Notices}
 	\begin{itemize}
-		\item should allow privacy control on websites
 		\item present on many websites
+		\item enabling privacy control
 		\item result of the \emph{General Data Protection Regulation} (GDPR) issued by the European Union in 2018
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{GDPR}
 	\begin{itemize}
-		\item regulate privacy online for EU citizens
-		\item restrict tracking online
+		\item regulate data usage online for EU citizens
+        \item specify how user data should be handled
+        \item users should be able to \emph{opt-out} of tracking
 		\item privacy policies should be readable
 	\end{itemize}
+
+    \pause
+    \textbf{General research goal}:
+
+    \begin{center}
+        evaluate the impact of the GDPR in the EU
+    \end{center}
+
+    \pause
+    \textbf{Our goal}:
+
+    \begin{center}
+        evaluate the impact of the GDPR on an international scale
+    \end{center}
+
+
+    \pause
+    Foresight: \approx 90\% of website perform tracking without consent
 \end{frame}
 
 \begin{frame}{Outline}
@@ -51,17 +75,40 @@
 
 \section{Technical Background}
 
-\begin{frame}{Tracking}
-    \centering
-    Cookie tracking vs fingerprinting
+\begin{frame}{Cookies}
+    \begin{itemize}
+        \item mechanism for stateful HTTP
+        \item small item with
+            \begin{itemize}
+                \item name
+                \item value
+                \item corresponding URL
+                \item time to live
+            \end{itemize}
+        \item stored in users browser and sent along requests
+        \item enable convenient features like shopping carts
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Cookie Tracking}
+    $\rightarrow$ third-party sets unique cookie on user A on visit of foo.com
+
+    $\rightarrow$ third-party sees same cookie on bar.com again
+
+    $\rightarrow$ knows it's user A
+
+    $\rightarrow$ reconstruct browsing history and surfing behavior
+
+    $\rightarrow$ show personalized ads
 \end{frame}
 
 \begin{frame}{GDPR}
     \begin{itemize}
-        \item cookies that can uniquely identify a user\\(except essential cookies e.g. shopping cart)
-        \item data stored not longer than necessary
+        \item applies to data that can uniquely identify a user\\(except essential cookies e.g. shopping cart)
         \item consent must be explicit
+        \item data stored not longer than necessary
         \item privacy policies transparent and accessible
+        \item applies to any data handling of EU citizens\\(not only EU websites)
     \end{itemize}
 \end{frame}
 
@@ -69,7 +116,7 @@
 
 \begin{frame}{Setup}
 	\begin{itemize}
-		\item Alexa top-1M websites
+		\item AWS Alexa top-1M websites
 		\item 2000 websites of the top categories determined by Symantec RuleSpace
 	\end{itemize}
 \end{frame}
@@ -77,6 +124,7 @@
 \begin{frame}{Data Collection}
     \begin{itemize}
         \item manual analysis
+        \item browser extension to collect the cookies
         \item always opt-out if possible
         \item different types of cookie notices:
             \begin{itemize}
@@ -101,16 +149,20 @@
 
     Approach of the underlying work:
     \begin{itemize}
-        \item with xzcvbn
+        \item with xzcvbn (password strength tool)
         \item entropy of the cookie value
+        \item afterwards use third-party tracker list to distinguish between third-party and first-party trackers
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Privacy Policies}
     \begin{itemize}
-        \item copy HTML of the privacy policy
-        \item FRES
-        \item FKRL
+        \item copy HTML of the privacy policy of website upon visit
+        \item evaluate reading difficulty with two metrics
+            \begin{itemize}
+                \item Flesch Reading Ease Score (FRES)
+                \item Flesch-Kincaid Reading Level (FKRL)
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -163,13 +215,22 @@
     \end{tabular}
 \end{frame}
 
-% \begin{frame}{Limitations}
-%
-% \end{frame}
+\begin{frame}
+    \centering
+    Why do so many websites track you without consent?
+
+    \pause
+    $\rightarrow$ \textbf{Money}
+
+    \pause
+    Compliance costs > fines by the EU
+
+    main income of websites through third-party advertisement
+\end{frame}
 
 \begin{frame}{Conclusion}
     \begin{itemize}
-        \item manual analysis of international websites
+        \item manual analysis of international websites to evaluate the impact of the GDPR on a global scale
         \item GDPR had a global impact
         \item more information on privacy
         \item better readability of privacy policies
