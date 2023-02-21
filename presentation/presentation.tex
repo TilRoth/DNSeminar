@@ -78,6 +78,8 @@
 \begin{frame}{Cookies}
     \begin{itemize}
         \item mechanism for stateful HTTP
+        \hspace{5em}
+        \includegraphics[scale=0.1]{cookie_trans.png}
         \item small item with
             \begin{itemize}
                 \item name
@@ -86,8 +88,17 @@
                 \item time to live
             \end{itemize}
         \item stored in users browser and sent along requests
+        \item server can identify user in subsequent visits
         \item enable convenient features like shopping carts
     \end{itemize}
+    \footnotesize
+    \centering
+    \begin{tabular}{ l r }
+        name & sessionid \\\hline
+        value & 123abc456def789 \\\hline
+        URL & example.org \\\hline
+        valid & Tue, 16 May 2023 18:08:34 GMT
+    \end{tabular}
 \end{frame}
 
 \begin{frame}{Cookie Tracking}
@@ -151,6 +162,10 @@
     \begin{itemize}
         \item with xzcvbn (password strength tool)
         \item entropy of the cookie value
+            \begin{itemize}
+                \item "german" $\rightarrow$ no tracker
+                \item "1283762761628371628317263817263" $\rightarrow$ tracker
+            \end{itemize}
         \item afterwards use third-party tracker list to distinguish between third-party and first-party trackers
     \end{itemize}
 \end{frame}
